@@ -7,7 +7,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/phpcapdi/dbconnection.php";
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 $sql = "SELECT * FROM users";            
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($result);
 
   while($row[$n] = mysqli_fetch_array($result)){
     $id[$n]=$row[$n]['id'];

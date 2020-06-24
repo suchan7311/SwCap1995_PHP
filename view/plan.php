@@ -1,17 +1,4 @@
 <?php
-//     $id=$_POST['Id'];
-    
-// include $_SERVER["DOCUMENT_ROOT"]."/phpcapdi/dbconnection.php";
-// $conn = mysqli_connect($servername,$username,$password,$dbname);
-// $sql = "SELECT * FROM customer_messages WHERE id='$id'";            
-// $result = mysqli_query($conn,$sql);
-// $row = mysqli_fetch_array($result);
-//     echo $row['message'];
-//     $title = $row['title'];
-//     $content = $row['message'];
-//     $email=$row['email'];
-
-//   mysqli_close($conn);
 
 ?>
 

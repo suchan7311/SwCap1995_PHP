@@ -1,5 +1,4 @@
 <?php
-$n=0;
   
 session_start();     
 
@@ -7,8 +6,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/phpcapdi/dbconnection.php";
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 $sql = "SELECT * FROM customer_messages";            
 $result = mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($result);
 
+$n=0;
   while($row[$n] = mysqli_fetch_array($result)){
     $id[$n]=$row[$n]['id'];
     $title[$n] = $row[$n]['title'];
@@ -36,7 +35,6 @@ $row = mysqli_fetch_array($result);
                             <th>번호</th>
                             <th>제목</th>
                             <th>내용</th>
-                            <th>
                         </tr>
                     </thead>
                     <tbody>
