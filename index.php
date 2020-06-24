@@ -10,6 +10,8 @@ if(!isset($_SESSION['userID'])){
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/> 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <!DOCTYPE html>
 <html lang="en">
 <title>planA admin</title>
@@ -46,9 +48,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   </a>
   <h4 class="w3-bar-item"><b>Menu</b></h4>
   <a class="w3-bar-item w3-button w3-hover-black" href="#">신고함</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">문의함</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick()>유저관리</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#" >포인트 충전 관리</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(2)>문의함</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(3)>유저관리</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(4)>플랜 생성</a>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -79,7 +81,22 @@ function w3_open() {
     overlayBg.style.display = "block";
   }
 }
-function menuClick(){
+function menuClick(pageNumber){
+  if(pageNumber==2){
+  $.ajax({
+        type : "GET",
+        url : "/phpcapdi/view/question.php",
+        dataType : "text",
+        error : function() {
+            alert('통신실패!!');
+        },
+        success : function(data) {
+            $('.w3-main').html(data);
+        }
+ 
+    });
+  }
+  else if(pageNumber==3){
   $.ajax({
         type : "GET",
         url : "/phpcapdi/view/user.php",
@@ -92,6 +109,22 @@ function menuClick(){
         }
  
     });
+  }
+  
+  else if(pageNumber==4){
+  $.ajax({
+        type : "GET",
+        url : "/phpcapdi/view/plan.php",
+        dataType : "text",
+        error : function() {
+            alert('통신실패!!');
+        },
+        success : function(data) {
+            $('.w3-main').html(data);
+        }
+ 
+    });
+  }
 }
 // Close the sidebar with the close button
 function w3_close() {
