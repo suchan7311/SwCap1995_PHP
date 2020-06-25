@@ -9,7 +9,7 @@ $row = mysqli_fetch_array($result);
     echo $row['message'];
     $title = $row['title'];
     $content = $row['message'];
-    $email=$row['email'];
+    $answer=$row['answer'];
 
   mysqli_close($conn);
 
@@ -40,7 +40,7 @@ $row = mysqli_fetch_array($result);
     $('#submit').click(function () {
         $.ajax({
             type: "POST",
-            url: "./action/createPlan.php",
+            url: "./action/questionAnswerSubmit.php",
             data: {
                 id: <?=$id?>,
                 answer: $('#answer').val()
@@ -52,7 +52,7 @@ $row = mysqli_fetch_array($result);
     $(document).ready(function () {
         $('#title').text('<?php echo $title ?>');
         $('#content').text('<?php echo $content ?>');
-        $('#content').text('<?php echo $content ?>');
+        $('#answer').text('<?php $answer ?>');
         $('#id').val('<?php echo $id ?>');
 
     });

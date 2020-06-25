@@ -12,7 +12,13 @@ $n=0;
     $id[$n]=$row[$n]['id'];
     $title[$n] = $row[$n]['title'];
     $content[$n] = $row[$n]['message'];
-    $email[$n]=$row[$n]['email'];
+    if(empty($row[$n]['answer'])){
+        $answer[$n]="답변하지 않았습니다";
+    }
+        else{
+            $answer[$n]=$row[$n]['answer'];
+            
+        }    
     $n++;
   }
 
@@ -35,6 +41,7 @@ $n=0;
                             <th>번호</th>
                             <th>제목</th>
                             <th>내용</th>
+                            <th>답변</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +51,7 @@ $n=0;
                 echo "<td><a href='javascript:void(0)' class='text-decoration-none address' id='user'".$i." onclick='viewQuestion(this)' >".$id[$i]."</a></td>";
                 echo "<td width='300'>".$title[$i]."</td>";
                 echo "<td>".$content[$i]."</td>";
+                echo "<td>".$answer[$i]."</td>";
                 echo "</tr>";
               }
             ?>
@@ -79,6 +87,9 @@ $n=0;
                 {
                     visible: true
                 }, //col 2
+                {
+                    visible: true
+                }, //col 3
                 {
                     visible: true
                 }, //col 3

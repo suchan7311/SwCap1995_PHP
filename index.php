@@ -47,7 +47,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">신고함</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(1)>신고함</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(2)>문의함</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(3)>유저관리</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#" onclick=menuClick(4)>플랜 생성</a>
@@ -82,7 +82,21 @@ function w3_open() {
   }
 }
 function menuClick(pageNumber){
-  if(pageNumber==2){
+  if(pageNumber==1){
+  $.ajax({
+        type : "GET",
+        url : "/phpcapdi/view/report.php",
+        dataType : "text",
+        error : function() {
+            alert('통신실패!!');
+        },
+        success : function(data) {
+            $('.w3-main').html(data);
+        }
+ 
+    });
+  }
+  else if(pageNumber==2){
   $.ajax({
         type : "GET",
         url : "/phpcapdi/view/question.php",

@@ -4,7 +4,6 @@ $id=$_POST['id'];
 
 
 include $_SERVER["DOCUMENT_ROOT"]."/phpcapdi/dbconnection.php";
-include $_SERVER["DOCUMENT_ROOT"]."/phpcapdi/mailer.lib.php";
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 $sql = "SELECT * FROM customer_messages WHERE id='$id'";            
 $result = mysqli_query($conn,$sql);
@@ -18,6 +17,5 @@ $email=$row['email'];
 $sql = "UPDATE customer_messages SET answer='$answer'WHERE id='$id'";            
 $result = mysqli_query($conn,$sql);
 
-mailer("planA",'suchan7311@naver.com',$email,"문의답변",$answer,1);
 mysqli_close($conn);
 ?>
