@@ -45,6 +45,19 @@ $row = mysqli_fetch_array($result);
                 id: <?=$id?>,
                 answer: $('#answer').val()
             }
+        }).then(function(){
+            $.ajax({
+        type : "GET",
+        url : "./view/question.php",
+        dataType : "text",
+        error : function() {
+            alert('통신실패!!');
+        },
+        success : function(data) {
+            $('.w3-main').html(data);
+        }
+ 
+    });
         });
     });
 
@@ -53,7 +66,6 @@ $row = mysqli_fetch_array($result);
         $('#title').text('<?php echo $title ?>');
         $('#content').text('<?php echo $content ?>');
         $('#answer').text('<?php $answer ?>');
-        $('#id').val('<?php echo $id ?>');
 
     });
     
